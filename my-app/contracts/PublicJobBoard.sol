@@ -8,7 +8,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 /// @notice this contract lets the user post & manage a public job
 /// @custom:warning this contract has not been audited
 /// @custom:warning this contract is not complete
-contract PublicPosting is Ownable {
+contract PublicJobBoard is Ownable {
     /// @notice global variable that inits an empty job id array
     uint256 public PublicJobId = 0;
     /// @notice sets the admin of the contract to the deploying wallet
