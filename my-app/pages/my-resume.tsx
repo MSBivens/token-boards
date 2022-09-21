@@ -5,6 +5,7 @@ import Web3Modal from "web3modal";
 import { Web3Provider } from "@ethersproject/providers";
 import { useViewerRecord } from "@self.id/react";
 import styles from "../styles/resume.module.css";
+import Layout from "../components/Layout";
 
 function Home() {
   const [connection, connect, disconnect] = useViewerConnection();
@@ -78,7 +79,6 @@ function Home() {
 function RecordSetter() {
   const [name, setName] = useState("");
   const [twitter, setTwitter] = useState("");
-  const [role, setRole] = useState("");
   const record = useViewerRecord("basicProfile");
 
   console.log(record);
@@ -94,51 +94,53 @@ function RecordSetter() {
   };
 
   return (
-    <div className={styles.content}>
-      <div className={styles.mt2}>
-        {record.content ? (
-          <div className={styles.flexCol}>
-            <span className={styles.subtitle}>
-              Hello {record.content.name}! Twitter Handle:{" "}
-              {record.content.twitter}
-            </span>
+    <Layout>
+      <div className={styles.content}>
+        <div className={styles.mt2}>
+          {record.content ? (
+            <div className={styles.flexCol}>
+              <span className={styles.subtitle}>
+                Hello {record.content.name}! Twitter Handle:{" "}
+                {record.content.twitter}
+              </span>
 
+              <span>
+                The above name was loaded from Ceramic Network. Try updating it
+                below.
+              </span>
+            </div>
+          ) : (
             <span>
-              The above name was loaded from Ceramic Network. Try updating it
-              below.
+              You do not have a profile stream attached to your 3ID. Create a
+              basic profile by setting a name below.
             </span>
-          </div>
-        ) : (
-          <span>
-            You do not have a profile stream attached to your 3ID. Create a
-            basic profile by setting a name below.
-          </span>
-        )}
-      </div>
+          )}
+        </div>
 
-      <input
-        type="text"
-        placeholder="Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        className={styles.mt2}
-      />
-      <input
-        type="text"
-        placeholder="Twitter Handle"
-        value={twitter}
-        onChange={(e) => setTwitter(e.target.value)}
-        className={styles.mt2}
-      />
-      <button
-        onClick={() => {
-          updateRecordName(name);
-          updateRecordTwitter(twitter);
-        }}
-      >
-        Update
-      </button>
-    </div>
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className={styles.mt2}
+        />
+        <input
+          type="text"
+          placeholder="Twitter Handle"
+          value={twitter}
+          onChange={(e) => setTwitter(e.target.value)}
+          className={styles.mt2}
+        />
+        <button
+          onClick={() => {
+            updateRecordName(name);
+            updateRecordTwitter(twitter);
+          }}
+        >
+          Update
+        </button>
+      </div>
+    </Layout>
   );
 }
 
