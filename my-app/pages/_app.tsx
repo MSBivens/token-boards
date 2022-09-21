@@ -4,6 +4,7 @@ import { WagmiConfig, createClient, configureChains, chain } from "wagmi";
 import { publicProvider } from "wagmi/providers/public";
 import { connectorsForWallets, wallet } from "@rainbow-me/rainbowkit";
 import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { Provider } from "@self.id/react";
 import "../styles/globals.css";
 
 export const { chains, provider } = configureChains(
@@ -34,7 +35,9 @@ export default function App({ Component, pageProps }: AppProps) {
     <WagmiConfig client={client}>
       <RainbowKitProvider chains={chains}>
         <SessionProvider session={pageProps.session} refetchInterval={0}>
-          <Component {...pageProps} />
+          <Provider client={{ ceramic: "testnet-clay" }}>
+            <Component {...pageProps} />
+          </Provider>
         </SessionProvider>
       </RainbowKitProvider>
     </WagmiConfig>

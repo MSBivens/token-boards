@@ -9,21 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@rainbow-me/rainbowkit": "^0.6.0",
+    "@rainbow-me/rainbowkit": "^0.6.1",
+    "@self.id/react": "^0.3.3",
+    "@self.id/web": "^0.4.3",
     "dotenv": "^16.0.2",
     "ethers": "^5.7.1",
+    "key-did-provider-ed25519": "^2.0.1",
     "next": "12.3.1",
     "next-auth": "^4.10.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "siwe": "^1.1.6",
-    "wagmi": "^0.6.6"
+    "siwe": "2.0.5",
+    "wagmi": "^0.6.6",
+    "web3modal": "^1.9.9"
   },
   "devDependencies": {
     "@types/node": "18.7.18",
     "@types/react": "18.0.20",
     "@types/react-dom": "18.0.6",
-    "autoprefixer": "^10.4.11",
+    "autoprefixer": "^10.4.12",
     "eslint": "8.23.1",
     "eslint-config-next": "12.3.1",
     "postcss": "^8.4.16",
