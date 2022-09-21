@@ -22,7 +22,7 @@ const config: HardhatUserConfig = {
   networks: {
     skale: {
       url: skale,
-      accounts: [privateKey],
+      accounts: privateKey,
       gasPrice: 0,
     },
   },
