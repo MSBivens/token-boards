@@ -71,6 +71,11 @@ export default function Header() {
               <a>Post a Job</a>
             </Link>
           </li>
+          <li className={styles.navItem}>
+            <Link href="/my-resume">
+              <a>My Resume</a>
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>
