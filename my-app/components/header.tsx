@@ -62,8 +62,8 @@ export default function Header() {
             </Link>
           </li>
           <li className={styles.navItem}>
-            <Link href="/siwe">
-              <a>SIWE</a>
+            <Link href="/public-job-board">
+              <a>Public Job Board</a>
             </Link>
           </li>
         </ul>
