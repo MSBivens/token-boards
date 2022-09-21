@@ -1,0 +1,74 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap");
+
+html {
+  scroll-behavior: smooth;
+  font-family: "Rubik", sans-serif;
+}
+
+a {
+  font-weight: 500;
+}
+
+@layer base {
+  body {
+    @apply bg-[#fafafa];
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  p {
+    @apply text-[#171717];
+  }
+  li.custom-list:before {
+    content: "\2022"; /* bullet point, for screen readers */
+    text-indent: -9999999px; /* move the bullet point out of sight */
+
+    width: 0.4em;
+    height: 1em;
+    background-repeat: no-repeat;
+
+    background-size: 0.4em 0.7em;
+    background-position: 0 0.3em;
+    font-size: 300%;
+    top: -0.35em;
+    @apply absolute block;
+  }
+  li.circle-check:before {
+    background-image: url("/assets/checklist.svg");
+    left: -0.7em;
+    top: -0.4em;
+  }
+}
+button {
+  margin: 0 0 0.75rem 0;
+  text-decoration: none;
+  padding: 0.7rem 1.4rem;
+  border: 1px solid #346df1;
+  background-color: #346df1;
+  /* color: #fff; */
+  font-size: 1rem;
+  border-radius: 4px;
+  transition: all 0.1s ease-in-out;
+  font-weight: 500;
+  position: relative;
+}
+button:hover {
+  cursor: pointer;
+  box-shadow: inset 0 0 5rem rgb(0 0 0 / 20%);
+}
+
+hr {
+  border: 1px solid #ddd;
+}
+
+iframe {
+  background: #ccc;
+  border: 1px solid #ccc;
+  height: 10rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  filter: invert(1);
+}
