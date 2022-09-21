@@ -4,7 +4,7 @@ import { ethers } from "ethers";
 import JobBoardABI from "../../jobBoard.json";
 import { hasEthereum, requestAccount } from "../../utils";
 
-export default function InputForm() {
+export default function post() {
   const [loading, setLoading] = useState(false);
 
   const [formValues, setFormValues] = useState({
@@ -68,14 +68,14 @@ export default function InputForm() {
     const signer = provider.getSigner();
     const signerAddress = await signer.getAddress();
     const contract = new ethers.Contract(
-      process.env.NEXT_PUBLIC_JOBBOARD_ADDRESS,
+      process.env.PUBLIC_JOBBOARD_ADDRESS,
       JobBoardABI,
       signer
     );
 
     let overrides = {
       // To convert Ether to Wei:
-      value: ethers.utils.parseEther("0.005"), // ether in this case MUST be a string
+      value: ethers.utils.parseEther("0.005"),
     };
     const transaction = await contract.addJob(
       formValues.companyName,
