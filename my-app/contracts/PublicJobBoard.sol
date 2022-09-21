@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.7;
 
-import "@openzeppelin/contracts/ownership/Ownable.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
 /// @title Public Job Board Posting
 /// @author Mike Bivens
