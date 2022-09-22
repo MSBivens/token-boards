@@ -9,7 +9,7 @@ import { SiweMessage } from "siwe";
 import { useAccount, useNetwork, useSignMessage } from "wagmi";
 import Layout from "../components/Layout";
 
-export default function post() {
+export default function Post() {
   const { signMessageAsync } = useSignMessage();
   const { chain } = useNetwork();
   const { address } = useAccount();
