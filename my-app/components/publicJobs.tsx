@@ -6,7 +6,7 @@ export default function Board({
   position,
   employmentType,
   location,
-  companyWebsiteUrl,
+  companyUrl,
 }) {
   const info = {
     display: "flex",
@@ -23,8 +23,13 @@ export default function Board({
           <span>{employmentType} - </span> <span> {location}</span>
         </p>
       </div>
-
-      <a href={companyWebsiteUrl} className="primary-btn">
+      <a
+        href={`companyUrl`}
+        target="_blank"
+        rel="noreferrer"
+        passHref={true}
+        className="primary-btn"
+      >
         Apply
       </a>
     </div>
