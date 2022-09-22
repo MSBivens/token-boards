@@ -1,13 +1,15 @@
 import React from "react";
 
-export default function Board({
-  id,
-  companyName,
-  position,
-  employmentType,
-  location,
-  companyUrl,
-}) {
+type Board = {
+  id: number;
+  companyName: string;
+  position: string;
+  employmentType: string;
+  location: string;
+  companyUrl: string;
+};
+
+export default function Board() {
   const info = {
     display: "flex",
     flexDirection: "column",
