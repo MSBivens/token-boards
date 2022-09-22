@@ -1,15 +1,13 @@
 import React from "react";
 
-type Board = {
-  id: number;
-  companyName: string;
-  position: string;
-  employmentType: string;
-  location: string;
-  companyUrl: string;
-};
-
-export default function Board() {
+export default function Board({
+  id,
+  companyName,
+  position,
+  employmentType,
+  location,
+  companyUrl,
+}) {
   const info = {
     display: "flex",
     flexDirection: "column",
@@ -26,10 +24,9 @@ export default function Board() {
         </p>
       </div>
       <a
-        href={`companyUrl`}
+        href={companyUrl}
         target="_blank"
         rel="noreferrer"
-        passHref={true}
         className="primary-btn"
       >
         Apply
