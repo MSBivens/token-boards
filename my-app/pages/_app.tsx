@@ -1,4 +1,5 @@
 import { SessionProvider } from "next-auth/react";
+import { Session } from "next-auth";
 import type { AppProps } from "next/app";
 import { WagmiConfig, createClient, configureChains, chain } from "wagmi";
 import { publicProvider } from "wagmi/providers/public";
@@ -30,7 +31,12 @@ const client = createClient({
   connectors,
 });
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({
+  Component,
+  pageProps,
+}: AppProps<{
+  session: Session;
+}>) {
   return (
     <WagmiConfig client={client}>
       <RainbowKitProvider chains={chains}>
