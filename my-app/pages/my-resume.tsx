@@ -32,7 +32,7 @@ function Home() {
   useEffect(() => {
     if (connection.status !== "connected") {
       web3ModalRef.current = new Web3Modal({
-        network: "rinkeby",
+        network: "skale",
         providerOptions: {},
         disableInjectedProvider: false,
       });
