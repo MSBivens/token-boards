@@ -24,6 +24,7 @@ function Home() {
   };
 
   const getProvider = async () => {
+    // @ts-ignore: will return to solve
     const provider = await web3ModalRef.current.connect();
     const wrappedProvider = new Web3Provider(provider);
     return wrappedProvider;
@@ -31,6 +32,7 @@ function Home() {
 
   useEffect(() => {
     if (connection.status !== "connected") {
+      // @ts-ignore: will return to solve
       web3ModalRef.current = new Web3Modal({
         network: "skale",
         providerOptions: {},
@@ -83,11 +85,13 @@ function RecordSetter() {
 
   console.log(record);
   const updateRecordName = async (name) => {
+    // @ts-ignore: will return to solve
     await record.merge({
       name: name,
     });
   };
   const updateRecordTwitter = async (twitter) => {
+    // @ts-ignore: will return to solve
     await record.merge({
       twitter: twitter,
     });
