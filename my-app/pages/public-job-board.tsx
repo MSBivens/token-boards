@@ -73,12 +73,13 @@ function Siwe() {
   async function getAdmin() {
     if (!hasEthereum()) {
       setConnectedWalletAddressState(`MetaMask unavailable`);
-      notify("error", "MetaMask unavailable");
       return;
     }
     await requestAccount();
+    // @ts-ignore: will return to solve
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const contract = new ethers.Contract(
+      // @ts-ignore: will return to solve
       PublicJobBoard.address,
       PublicJobBoard.abi,
       provider
@@ -102,8 +103,10 @@ function Siwe() {
       setConnectedWalletAddressState(`MetaMask unavailable`);
       return;
     }
+    // @ts-ignore: will return to solve
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const contract = new ethers.Contract(
+      // @ts-ignore: will return to solve
       PublicJobBoard.address,
       PublicJobBoard.abi,
       provider
@@ -140,7 +143,9 @@ function Siwe() {
         </div>
       ) : (
         PublicJobsState &&
+        // @ts-ignore: will return to solve
         PublicJobsState.map(
+          // @ts-ignore: will return to solve
           (publicJob, index) =>
             publicJob.employer !=
               "0x0000000000000000000000000000000000000000" && (
