@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Hero = ({
   listUser = [
@@ -65,6 +66,24 @@ const Hero = ({
               </div>
             </div>
           ))}
+        </div>
+        <div>
+          <ul>
+            <li>
+              <Link href="/public-job-board">
+                <a className="py-2 text-gray-600 underline cursor-pointer">
+                  Public Job Board
+                </a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/post">
+                <a className="py-2 text-gray-600 underline cursor-pointer">
+                  Post a Job
+                </a>
+              </Link>
+            </li>
+          </ul>
         </div>
         <div
           className="absolute bg-black-600 opacity-5 w-11/12 roudned-lg h-64 sm:h-48 top-0 mt-8 mx-auto left-0 right-0"
