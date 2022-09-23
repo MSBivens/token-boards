@@ -46,12 +46,12 @@ function Siwe() {
 
   useEffect(() => {
     if (!hasEthereum()) {
-      notify("error", "MetaMask unavailable");
       setConnectedWalletAddressState(`MetaMask unavailable`);
       setLoading(false);
       return;
     }
     async function setConnectedWalletAddress() {
+      // @ts-ignore: will return to solve
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
       try {
