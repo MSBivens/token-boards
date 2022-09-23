@@ -1,3 +1,4 @@
+// @ts-ignore: will return to solve
 const hre = require("hardhat");
 
 async function main() {
