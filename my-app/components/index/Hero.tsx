@@ -7,17 +7,17 @@ const Hero = ({
     {
       name: "Postings",
       number: "390",
-      icon: "/assets/postings.svg",
+      // icon: "/assets/postings.svg",
     },
     {
       name: "Communities",
       number: "20",
-      icon: "/assets/communities.svg",
+      // icon: "/assets/communities.svg",
     },
     {
       name: "Applicants",
       number: "50",
-      icon: "/assets/applicants.svg",
+      // icon: "/assets/applicants.svg",
     },
   ],
 }) => {
