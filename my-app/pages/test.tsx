@@ -6,7 +6,6 @@ import Layout from "../components/Layout";
 //Imports
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import { providers } from "ethers";
-import Head from "next/head";
 import { useCallback, useEffect, useReducer } from "react";
 import WalletLink from "walletlink";
 import Web3Modal from "web3modal";
@@ -120,13 +119,8 @@ export const Test = (): JSX.Element => {
   const { provider, web3Provider, address, chainId } = state;
 
   const connect = useCallback(async function () {
-    // This is the initial `provider` that is returned when
-    // using web3Modal to connect. Can be MetaMask or WalletConnect.
     const provider = await web3Modal.connect();
 
-    // We plug the initial `provider` into ethers.js and get back
-    // a Web3Provider. This will add on methods from ethers.js and
-    // event listeners such as `.on()` will be different.
     const web3Provider = new providers.Web3Provider(provider);
 
     const signer = web3Provider.getSigner();
@@ -164,13 +158,9 @@ export const Test = (): JSX.Element => {
     }
   }, [connect]);
 
-  // A `provider` should come with EIP-1193 events. We'll listen for those events
-  // here so that when a user switches accounts or networks, we can update the
-  // local React state with that new information.
   useEffect(() => {
     if (provider?.on) {
       const handleAccountsChanged = (accounts: string[]) => {
-        // eslint-disable-next-line no-console
         console.log("accountsChanged from event", accounts);
         dispatch({
           type: "SET_ADDRESS",
@@ -178,13 +168,11 @@ export const Test = (): JSX.Element => {
         });
       };
 
-      // https://docs.ethers.io/v5/concepts/best-practices/#best-practices--network-changes
       const handleChainChanged = (_hexChainId: string) => {
         window.location.reload();
       };
 
       const handleDisconnect = (error: { code: number; message: string }) => {
-        // eslint-disable-next-line no-console
         console.log("disconnect", error);
         disconnect();
       };
@@ -193,7 +181,6 @@ export const Test = (): JSX.Element => {
       provider.on("chainChanged", handleChainChanged);
       provider.on("disconnect", handleDisconnect);
 
-      // Subscription Cleanup
       return () => {
         if (provider.removeListener) {
           provider.removeListener("accountsChanged", handleAccountsChanged);
@@ -204,15 +191,12 @@ export const Test = (): JSX.Element => {
     }
   }, [provider, disconnect]);
 
+  const chainData = getChainData(chainId);
+
   return (
     <div>
       <Layout>
         <div className="container">
-          <Head>
-            <title>Create Next App</title>
-            <link rel="icon" href="/favicon.ico" />
-          </Head>
-
           <header>
             {address && (
               <div className="grid">
@@ -229,14 +213,14 @@ export const Test = (): JSX.Element => {
           </header>
 
           <main>
-            <h1 className="title">Web3Modal Example</h1>
             {web3Provider ? (
+              // Put Job Board here
               <button className="button" type="button" onClick={disconnect}>
                 Disconnect
               </button>
             ) : (
               <button className="button" type="button" onClick={connect}>
-                Connect
+                Connect To View Jobs
               </button>
             )}
           </main>
@@ -277,21 +261,6 @@ export const Test = (): JSX.Element => {
             }
             .mb-1 {
               margin-bottom: 0.25rem;
-            }
-          `}</style>
-
-          <style jsx global>{`
-            html,
-            body {
-              padding: 0;
-              margin: 0;
-              font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-                Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-                sans-serif;
-            }
-
-            * {
-              box-sizing: border-box;
             }
           `}</style>
         </div>
